@@ -1,0 +1,58 @@
+GET http://localhost:4000/flights
+
+###
+GET http://localhost:4000/flights/c508e135-2cac-4a6f-bf49-0323db54bded
+###
+POST  http://localhost:4000/flights
+Content-Type: application/json
+
+{
+    "Name":"Cynthia Gichuki",
+    "Email":"gichukicynthia1@gmail.com",
+    "Destination":"China",
+    "TravelDate":"2023/03/03"
+}
+
+###
+PUT  http://localhost:4000/flights/c508e135-2cac-4a6f-bf49-0323db54bded
+Content-Type: application/json
+
+{
+    "Name":"Verah",
+    "Email":"verah@gmail.com",
+    "Destination":"Japan",
+    "TravelDate":"2023/02/20"
+}
+
+###
+GET http://localhost:4000/flights/c508e135-2cac-4a6f-bf49-0323db54bded
+
+
+###
+DELETE  http://localhost:4000/flights/c508e135-2cac-4a6f-bf49-0323db54bded
+
+
+
+###
+POST  http://localhost:4000/auth/register
+Content-Type: application/json
+
+{
+    "Name":"Kuku Ali Ngocho",
+    "Email":"wrightkuku10@gmail.com",
+    "Password":"Tryme!here23"
+}
+
+###
+POST  http://localhost:4000/auth/login
+Content-Type: application/json
+
+{
+    "Email":"elvis@gmail.com",
+    "Password":"Tryme!here23"
+}
+
+
+###
+GET  http://localhost:4000/auth/home
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjkwOWMyNDhiLTMzYWItNDM5ZS04MTEyLTc2MDRmNzIwYjAyYiIsIk5hbWUiOiJFbHZpcyBHaXNpb3JhIiwiRW1haWwiOiJlbHZpc0BnbWFpbC5jb20iLCJSb2xlIjoidXNlciIsImlhdCI6MTY3NTg1MDY4OSwiZXhwIjoxNjc1ODU0Mjg5fQ.bPTAoivR1oa-ew0FqFHBhkccVTDI2P23yneLIxiBNNU
