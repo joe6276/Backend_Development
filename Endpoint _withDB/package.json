@@ -2,7 +2,6 @@
   "name": "endpoint-_withdb",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start:build": "tsc -w",
     "start:run": "nodemon dist/server.js",

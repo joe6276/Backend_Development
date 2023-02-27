@@ -1,12 +1,13 @@
 import { RequestHandler,Request,Response } from 'express'
 import {v4 as uid} from 'uuid'
 import { bookingSchema } from '../Helpers'
-import { Booking } from '../Models'
+import { Booking, DecodedData } from '../Models'
 import { DatabaseHelper } from '../DatabaseHelpers'
 const _db= new DatabaseHelper()
 interface ExtendedRequest extends Request{
     body:{Name:string,Email:string,Destination:string, TravelDate:string},
-    params:{id:string}
+    params:{id:string},
+    info?:DecodedData
 }
 //Get booking Details
 export const getBookings:RequestHandler=async (req,res)=>{
@@ -34,20 +35,40 @@ try {
 }
 
 }
+
+export const getbyEmail=async(req:ExtendedRequest,res:Response)=>{
+  try {
+     if(req.info){
+      const booking:Booking= await (await  _db.exec('getByEmail', {email:req.info.Email})).recordset[0]
+      if(!booking){
+         res.status(404).json({error:'Booking Not Found'})
+      }
+    
+      res.status(200).json(booking)
+     }
+    
+  
+  } catch (error) {
+    res.status(500).json(error)
+  }
+  
+  }
  export async function addBooking( req:ExtendedRequest, res:Response) {
   try {
     const id =uid()
-    const {Name,Email,TravelDate,Destination}= req.body
+    const {TravelDate,Destination}= req.body
     
-    console.log(req.body);
+
     
     // if(error){
     //   return res.status(422).json(error.details[0].message)
     // }
+   if(req.info){
     _db.exec('InsertOrUpdate', 
-    {id,name:Name, email:Email, destination:Destination,date:TravelDate})
+    {id,name:req.info.Name, email:req.info.Email, destination:Destination,date:TravelDate})
 
    return  res.status(201).json({message:'Booking Added'})
+   }
   } 
   catch (error:any) {
      return res.status(500).json(error.message)
@@ -60,15 +81,18 @@ try {
 
 export async function updateBooking(req:ExtendedRequest,res:Response){
 try {
-const {Name,Email,TravelDate,Destination}= req.body
+const {TravelDate,Destination}= req.body
      const booking:Booking= await (await _db.exec('getFlightBookings',{id:req.params.id})).recordset[0]
 
-  if(booking){
-    await _db.exec('InsertOrUpdate', {id:req.params.id,name:Name, email:Email, destination:Destination, date:TravelDate})
-    return res.status(200).json({message:'Updated'})
+  if(req.info){
+    if(booking){
+      await _db.exec('InsertOrUpdate', {id:req.params.id,name:req.info.Name, email:req.info.Email, destination:Destination, date:TravelDate})
+      return res.status(200).json({message:'Updated'})
+    }
   }
 
-  return res.status(404).json({error:'Booking Not Found'})    
+  return res.status(404).json({error:'Booking Not Found'}) 
+     
   } 
 
 catch (error:any) {

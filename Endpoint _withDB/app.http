@@ -1,25 +1,23 @@
 GET http://localhost:4000/flights
-
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjkzY2RhYTJmLWQ5MDItNDdlOC1hN2Q0LTRiMGI2ZmM0MDQ5NCIsIk5hbWUiOiJoZWxsbyIsIkVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiUm9sZSI6InVzZXIiLCJpc1NlbnQiOiIwIiwiaWF0IjoxNjc3NTAzMzU3LCJleHAiOjE2Nzc1MDY5NTd9.wKRBeY3yScs9_iwxvJkv6DvOYBMNjNSNMaDWZcdnuhY
 ###
 GET http://localhost:4000/flights/c508e135-2cac-4a6f-bf49-0323db54bded
 ###
 POST  http://localhost:4000/flights
 Content-Type: application/json
-
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjkzY2RhYTJmLWQ5MDItNDdlOC1hN2Q0LTRiMGI2ZmM0MDQ5NCIsIk5hbWUiOiJoZWxsbyIsIkVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiUm9sZSI6InVzZXIiLCJpc1NlbnQiOiIwIiwiaWF0IjoxNjc3NTAzMzU3LCJleHAiOjE2Nzc1MDY5NTd9.wKRBeY3yScs9_iwxvJkv6DvOYBMNjNSNMaDWZcdnuhY
 {
-    "Name":"Cynthia Gichuki",
-    "Email":"gichukicynthia1@gmail.com",
     "Destination":"China",
     "TravelDate":"2023/03/03"
 }
 
 ###
-PUT  http://localhost:4000/flights/c508e135-2cac-4a6f-bf49-0323db54bded
+PUT  http://localhost:4000/flights/93067214-6361-4a02-ac1f-db118e6aa725
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjkzY2RhYTJmLWQ5MDItNDdlOC1hN2Q0LTRiMGI2ZmM0MDQ5NCIsIk5hbWUiOiJoZWxsbyIsIkVtYWlsIjoiaGVsbG9AZ21haWwuY29tIiwiUm9sZSI6InVzZXIiLCJpc1NlbnQiOiIwIiwiaWF0IjoxNjc3NTAzMzU3LCJleHAiOjE2Nzc1MDY5NTd9.wKRBeY3yScs9_iwxvJkv6DvOYBMNjNSNMaDWZcdnuhY
 Content-Type: application/json
 
 {
-    "Name":"Verah",
-    "Email":"verah@gmail.com",
+    
     "Destination":"Japan",
     "TravelDate":"2023/02/20"
 }
@@ -48,8 +46,8 @@ POST  http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
-    "Email":"elvis@gmail.com",
-    "Password":"Tryme!here23"
+    "Email":"hello@gmail.com",
+    "Password":"Hello@2023"
 }
 
 
