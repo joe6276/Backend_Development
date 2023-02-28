@@ -25,13 +25,13 @@ try {
   const id = req.params.id
   const booking:Booking= await (await  _db.exec('getFlightBookings', {id})).recordset[0]
   if(!booking){
-     res.status(404).json({error:'Booking Not Found'})
+     return res.status(404).json({error:'Booking Not Found'})
   }
 
-  res.status(200).json(booking)
+  return res.status(200).json(booking)
 
 } catch (error) {
-  res.status(500).json(error)
+  return res.status(500).json(error)
 }
 
 }
@@ -39,8 +39,8 @@ try {
 export const getbyEmail=async(req:ExtendedRequest,res:Response)=>{
   try {
      if(req.info){
-      const booking:Booking= await (await  _db.exec('getByEmail', {email:req.info.Email})).recordset[0]
-      if(!booking){
+      const booking:Booking[]= await (await  _db.exec('getByEmail', {email:req.info.Email})).recordset
+      if(!booking[0]){
          res.status(404).json({error:'Booking Not Found'})
       }
     

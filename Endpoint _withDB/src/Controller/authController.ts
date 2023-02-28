@@ -25,7 +25,7 @@ try {
     }
     const hashedPassword= await Bcrypt.hash(Password,10)
     ///check if email exist
-    await _db.exec('RegisterUser', {name:Name,email:Email, password:hashedPassword})
+    await _db.exec('RegisterUser', {id,name:Name,email:Email, password:hashedPassword})
     return res.status(201).json({message:'User registered'})
 
 } 
@@ -57,7 +57,7 @@ try {
         return rest
     })
     const token = jwt.sign(payload[0], process.env.SECRETKEY as string , {expiresIn:'3600s'})
-    return res.status(200).json({message:'User Loggedin!!!', token})
+    return res.status(200).json({message:'User Loggedin!!!', token, role:user[0].Role, name:user[0].Name})
 
 } catch (error) {
     res.status(500).json(error) 
