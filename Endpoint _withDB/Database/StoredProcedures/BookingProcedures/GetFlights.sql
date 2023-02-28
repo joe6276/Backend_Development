@@ -6,6 +6,3 @@ SELECT Name,Email,Destination, TravelDate FROM FlightsBookings WHERE  isDeleted=
 
 END
 
-
--- 
--- EXEC getFlights
