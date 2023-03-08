@@ -45,11 +45,11 @@ try {
 
     const user:User[]= await (await _db.exec('getUserByEmail', {email:Email} )).recordset
         if(!user[0]){
-         return res.status(404).json({error:'User Not found'})
+         return res.status(404).json('User Not found')
         }
     const valid= await Bcrypt.compare(Password, user[0].Password)
     if(!valid){
-        return res.status(404).json({error:'User Not found'})
+        return res.status(404).json('User Not found')
     }
 
     const payload= user.map(item=>{

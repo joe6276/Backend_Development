@@ -1,0 +1,19 @@
+.container{
+    background-color:#240370;
+    /* width: 100vw; */
+    height: 5vw;
+}
+
+.links{
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: space-between;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+}

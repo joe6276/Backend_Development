@@ -31,3 +31,11 @@ export const LoginSchema= Joi.object({
     Password:Joi.string().required(),
 
 })
+
+export const AddBooking= Joi.object({
+    Destination:Joi.string().required().messages({
+       'string.empty':' Please add an Email',
+   }),
+   TravelDate:Joi.string().required(),
+
+})

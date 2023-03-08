@@ -1,0 +1,18 @@
+
+<div class="container">
+    <div class="content">
+          <div class="left">
+            <img src="https://imgs.search.brave.com/LPjfQzOAUoZ8g9-iAiV7LGVxfj0rWohCaK-nSJZYHSc/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9nZXQu/d2FsbGhlcmUuY29t/L3Bob3RvL2xpZ2h0/cy1uaWdodC12ZWhp/Y2xlLWFpcnBsYW5l/LWFpcmNyYWZ0LUJv/ZWluZy1Cb2Vpbmct/Nzc3LWxhbmRpbmct/cGFzc2VuZ2VyLWFp/cmNyYWZ0LUZsaWdo/dC1UYWtlb2ZmLWF2/aWF0aW9uLXdpbmct/YWlybGluZS1hdG1v/c3BoZXJlLW9mLWVh/cnRoLWFpcmNyYWZ0/LWVuZ2luZS1haXIt/dHJhdmVsLWFpcmxp/bmVyLWpldC1haXJj/cmFmdC13aWRlLWJv/ZHktYWlyY3JhZnQt/bmFycm93LWJvZHkt/YWlyY3JhZnQtYm9l/aW5nLTc2Ny0yMDM5/ODQuanBn" alt="" />
+         </div>
+        <div class="right" *ngIf=" booking as booking">
+            <h1>Tickets Details</h1>
+            <p>{{booking.Name}}</p>
+            <p>{{booking.Destination}}</p>
+            <p>{{booking.TravelDate| date}}</p>
+            <div class="buttons">
+                <button class="btn" (click)="Update()">Update</button>
+                <button class="btn1" (click)="Delete()">Delete</button>
+            </div>
+        </div>
+    </div>
+    </div>

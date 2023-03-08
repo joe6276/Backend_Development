@@ -13,7 +13,7 @@ app.use('/flights', router)
 app.use('/auth',authrouter)
 
 
-app.listen(4000,()=>{
+app.listen(4002,()=>{
 console.log("Running ...");
 
 })

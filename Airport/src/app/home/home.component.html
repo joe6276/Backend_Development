@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="background">
+      <img src="https://imgs.search.brave.com/F8Z5StMMtIfjGXEct4k8UgqgASfglV67cgCzOGSFHto/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9jb250/ZW50LnByZXNzcGFn/ZS5jb20vdXBsb2Fk/cy8yNDMxLzE5MjBf/VGhlLUVtaXJhdGVz/LUEzODAtODE2MjY1/LmpwZz8xMDAwMA" alt="" />
+    </div>
+
+    <div class="overlay">
+      <h1>Direct form TheJitu to Griffins</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, officia dicta? Ullam dolor laborum hic harum blanditiis adipisci natus cupiditate.</p>
+    </div>
+
+
+</div>
+<div *ngFor="let c of countries">
+  <input type="text" value="{{c.country}}" #input>
+  <p>{{c.country}}</p>
+</div>
+<button (click)="changeMe()" >Change</button>

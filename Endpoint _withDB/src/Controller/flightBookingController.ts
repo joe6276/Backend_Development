@@ -1,8 +1,9 @@
 import { RequestHandler,Request,Response } from 'express'
 import {v4 as uid} from 'uuid'
-import { bookingSchema } from '../Helpers'
+import { AddBooking, bookingSchema } from '../Helpers'
 import { Booking, DecodedData } from '../Models'
 import { DatabaseHelper } from '../DatabaseHelpers'
+import Joi from 'joi'
 const _db= new DatabaseHelper()
 interface ExtendedRequest extends Request{
     body:{Name:string,Email:string,Destination:string, TravelDate:string},
@@ -58,11 +59,10 @@ export const getbyEmail=async(req:ExtendedRequest,res:Response)=>{
     const id =uid()
     const {TravelDate,Destination}= req.body
     
-
-    
-    // if(error){
-    //   return res.status(422).json(error.details[0].message)
-    // }
+    const {error}= AddBooking.validate(req.body)
+    if(error){
+      return res.status(422).json(error.details[0].message)
+    }
    if(req.info){
     _db.exec('InsertOrUpdate', 
     {id,name:req.info.Name, email:req.info.Email, destination:Destination,date:TravelDate})
@@ -87,7 +87,8 @@ const {TravelDate,Destination}= req.body
   if(req.info){
     if(booking){
       await _db.exec('InsertOrUpdate', {id:req.params.id,name:req.info.Name, email:req.info.Email, destination:Destination, date:TravelDate})
-      return res.status(200).json({message:'Updated'})
+      const updatedBooking:Booking= await (await  _db.exec('getFlightBookings', {id:req.params.id})).recordset[0]
+      return res.status(200).json(updatedBooking)
     }
   }
 

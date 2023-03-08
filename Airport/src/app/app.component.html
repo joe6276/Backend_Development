@@ -1,0 +1,14 @@
+
+<div class="container">
+  <div class="links">
+    <a routerLink="" >JituPort</a>
+    <a  *ngIf="auth.isLoggedIn" routerLink="book">Book</a>
+  
+
+    <a *ngIf="!auth.isLoggedIn" routerLink="login">Login</a>
+    <a *ngIf="!auth.isLoggedIn" routerLink="register">Register</a>
+    <a *ngIf="auth.isLoggedIn" >Welcome {{auth.getName()}}</a>
+    <a *ngIf="auth.isLoggedIn" (click)="auth.logout()" routerLink="">Logout</a>
+  </div>
+  </div>
+<router-outlet></router-outlet>
