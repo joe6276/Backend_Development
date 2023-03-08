@@ -7,7 +7,7 @@
 
     <a *ngIf="!auth.isLoggedIn" routerLink="login">Login</a>
     <a *ngIf="!auth.isLoggedIn" routerLink="register">Register</a>
-    <a *ngIf="auth.isLoggedIn" >Welcome {{auth.getName()}}</a>
+    <a *ngIf="name$|async as name">Welcome {{name}} </a>
     <a *ngIf="auth.isLoggedIn" (click)="auth.logout()" routerLink="">Logout</a>
   </div>
   </div>

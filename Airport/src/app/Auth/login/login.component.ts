@@ -5,6 +5,9 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorComponent } from 'src/app/error/error.component';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/State/appState';
+import { login } from 'src/app/State/Actions/userActions';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +20,7 @@ export class LoginComponent implements OnInit {
   form!:FormGroup
   error=null
   constructor(private fb:FormBuilder, private authentication:AuthenticationService, private auth :AuthService,
-    private router:Router,
+    private router:Router,private store:Store<AppState>
   
     ){
 
@@ -30,17 +33,8 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm(){
-    this.authentication.loginUser(this.form.value).subscribe(response=>{
-      this.auth.setRole(response.role)
-      this.auth.setName(response.name)
-      this.auth.login()
-      localStorage.setItem('token', response.token)
-      if(response.token){
-        this.router.navigate(['book'])
-      }
-    },(error)=>{
-    this.error=error.error
-    })
+    this.store.dispatch(login({user:this.form.value}))
+  this.router.navigate(['book'])
   }
 
   Close(){
