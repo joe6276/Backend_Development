@@ -37,12 +37,12 @@ DELETE  http://localhost:4000/flights/c508e135-2cac-4a6f-bf49-0323db54bded
 
 
 ###
-POST  http://localhost:4000/auth/register
+POST  http://localhost:4002/auth/register
 Content-Type: application/json
 
 {
-    "Name":"Kuku Ali Ngocho",
-    "Email":"wrightkuku10@gmail.com",
+    "Name":"Jonathan",
+    "Email":"joendambuki16@gmail.com",
     "Password":"Tryme!here23"
 }
 

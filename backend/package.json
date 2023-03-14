@@ -23,6 +23,8 @@
     "joi": "^17.7.0",
     "jsonwebtoken": "^9.0.0",
     "mssql": "^9.1.1",
+    "nodemon": "^2.0.21",
+    "typescript": "^4.9.5",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
